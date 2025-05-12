@@ -46,6 +46,12 @@ public class ProductController {
         return ResponseEntity.ok(ProductMapper.toResponse(product));
     }
 
+    @PatchMapping("/{id}")
+    public ResponseEntity<ProductResponse> updateProductById(@PathVariable Long id, @RequestBody @Valid ProductRequest request) {
+        Product product = service.partialUpdate(id, request);
+        return ResponseEntity.ok(ProductMapper.toResponse(product));
+    }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         Optional<Product> product = Optional.ofNullable(service.findById(id));

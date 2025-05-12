@@ -52,6 +52,32 @@ public class ProductService {
         repository.delete(product);
     }
 
+    public Product partialUpdate(Long id, ProductRequest productRequest) {
+        var product = repository.findById(id).orElseThrow(() -> new ResponseStatusException(HttpStatus.NOT_FOUND));
+        if (productRequest.name() != null) {
+            product.setName(productRequest.name());
+        }
+        if (productRequest.description() != null) {
+            product.setDescription(productRequest.description());
+        }
+        if (productRequest.price() != null) {
+            product.setPrice(productRequest.price());
+        }
+        if (productRequest.imageUrl() != null) {
+            product.setImageUrl(productRequest.imageUrl());
+        }
+        if (productRequest.stockQuantity() != null) {
+            product.setStockQuantity(productRequest.stockQuantity());
+        }
+        if (productRequest.category() != null) {
+            var update = ProductMapper.toProduct(productRequest);
+            product.getCategory().clear();
+            product.setCategory(this.findCategories(update.getCategory()));
+        }
+        return repository.save(product);
+
+    }
+
     public List<Category> findCategories(List<Category> categories) {
         List<Category> categoriesList = new ArrayList<>();
         for (Category category : categories) {
