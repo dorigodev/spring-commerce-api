@@ -47,6 +47,11 @@ public class ProductService {
         return repository.save(product);
     }
 
+    public void delete(Long id) {
+        Product product = findById(id);
+        repository.delete(product);
+    }
+
     public List<Category> findCategories(List<Category> categories) {
         List<Category> categoriesList = new ArrayList<>();
         for (Category category : categories) {
