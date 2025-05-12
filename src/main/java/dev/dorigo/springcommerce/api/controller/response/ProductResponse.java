@@ -1,6 +1,6 @@
 package dev.dorigo.springcommerce.api.controller.response;
 
-import dev.dorigo.springcommerce.api.domain.Category;
+
 import lombok.Builder;
 
 import java.math.BigDecimal;
