@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>dev.dorigo</groupId>
-	<artifactId>springcommerce.api</artifactId>
+	<artifactId>springcommerce-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>springcommerce.api</name>
 	<description>A SImple e-commerce with springboot for study</description>
