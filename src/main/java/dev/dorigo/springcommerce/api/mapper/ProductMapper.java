@@ -3,8 +3,8 @@ package dev.dorigo.springcommerce.api.mapper;
 import dev.dorigo.springcommerce.api.controller.request.ProductRequest;
 import dev.dorigo.springcommerce.api.controller.response.CategoryResponse;
 import dev.dorigo.springcommerce.api.controller.response.ProductResponse;
-import dev.dorigo.springcommerce.api.domain.Category;
-import dev.dorigo.springcommerce.api.domain.Product;
+import dev.dorigo.springcommerce.api.domain.Product.Category;
+import dev.dorigo.springcommerce.api.domain.Product.Product;
 
 import java.util.List;
 

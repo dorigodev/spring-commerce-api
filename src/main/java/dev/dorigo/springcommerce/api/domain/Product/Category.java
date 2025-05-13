@@ -1,4 +1,4 @@
-package dev.dorigo.springcommerce.api.domain;
+package dev.dorigo.springcommerce.api.domain.Product;
 
 import jakarta.persistence.*;
 import lombok.*;

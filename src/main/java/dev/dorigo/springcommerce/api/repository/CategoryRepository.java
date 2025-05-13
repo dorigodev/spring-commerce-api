@@ -1,6 +1,6 @@
 package dev.dorigo.springcommerce.api.repository;
 
-import dev.dorigo.springcommerce.api.domain.Category;
+import dev.dorigo.springcommerce.api.domain.Product.Category;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

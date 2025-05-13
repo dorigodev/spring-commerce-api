@@ -1,7 +1,7 @@
 package dev.dorigo.springcommerce.api.service;
 
 import dev.dorigo.springcommerce.api.controller.request.CategoryRequest;
-import dev.dorigo.springcommerce.api.domain.Category;
+import dev.dorigo.springcommerce.api.domain.Product.Category;
 import dev.dorigo.springcommerce.api.mapper.CategoryMapper;
 import dev.dorigo.springcommerce.api.repository.CategoryRepository;
 import org.junit.jupiter.api.Test;

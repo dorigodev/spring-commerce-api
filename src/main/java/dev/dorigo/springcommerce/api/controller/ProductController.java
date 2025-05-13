@@ -2,7 +2,7 @@ package dev.dorigo.springcommerce.api.controller;
 
 import dev.dorigo.springcommerce.api.controller.request.ProductRequest;
 import dev.dorigo.springcommerce.api.controller.response.ProductResponse;
-import dev.dorigo.springcommerce.api.domain.Product;
+import dev.dorigo.springcommerce.api.domain.Product.Product;
 import dev.dorigo.springcommerce.api.mapper.ProductMapper;
 import dev.dorigo.springcommerce.api.service.ProductService;
 import jakarta.validation.Valid;

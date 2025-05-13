@@ -2,7 +2,7 @@ package dev.dorigo.springcommerce.api.controller;
 
 import dev.dorigo.springcommerce.api.controller.request.CategoryRequest;
 import dev.dorigo.springcommerce.api.controller.response.CategoryResponse;
-import dev.dorigo.springcommerce.api.domain.Category;
+import dev.dorigo.springcommerce.api.domain.Product.Category;
 import dev.dorigo.springcommerce.api.mapper.CategoryMapper;
 import dev.dorigo.springcommerce.api.service.CategoryService;
 import jakarta.validation.Valid;
