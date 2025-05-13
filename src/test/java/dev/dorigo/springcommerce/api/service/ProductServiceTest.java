@@ -12,6 +12,7 @@ import org.mockito.Mock;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -46,7 +47,7 @@ class ProductServiceTest {
                 );
         Product saveProduct = ProductMapper.toProduct(product);
         saveProduct.setId(1L);
-        saveProduct.setCategory(List.of(category));
+        saveProduct.setCategory(new ArrayList<>(List.of(category)));
 
         when(categoryService.getyById(1L)).thenReturn(category);
         when(productRepository.save(any())).thenReturn(saveProduct);
@@ -87,13 +88,13 @@ class ProductServiceTest {
         );
         Product saveProduct2 = ProductMapper.toProduct(product2);
         saveProduct2.setId(2L);
-        saveProduct2.setCategory(List.of(category));
+        saveProduct.setCategory(new ArrayList<>(List.of(category)));
 
         when(productRepository.findAll()).thenReturn(List.of(saveProduct, saveProduct2));
 
         var result = productService.findAll();
 
-        assertEquals(result.size(), 2);
+        assertEquals(2, result.size());
         assertEquals(result.get(0).getId(), saveProduct.getId());
         assertEquals(result.get(1).getId(), saveProduct2.getId());
 
@@ -114,7 +115,7 @@ class ProductServiceTest {
         );
         Product saveProduct = ProductMapper.toProduct(product);
         saveProduct.setId(1L);
-        saveProduct.setCategory(List.of(category));
+        saveProduct.setCategory(new ArrayList<>(List.of(category)));
 
         when(productRepository.findById(1L)).thenReturn(Optional.of(saveProduct));
         var result = productService.findById(1L);
@@ -126,6 +127,47 @@ class ProductServiceTest {
         assertEquals(result.getCategory(), saveProduct.getCategory());
 
         verify(productRepository).findById(1L);
+    }
+
+    @Test
+    void shouldUpdateProduct() {
+        Category category = new Category(1L, "name category");
+        List<Long> categories = List.of(1L);
+
+        ProductRequest product = new ProductRequest("Nome produto",
+                "Descricao Produto",
+                BigDecimal.TEN,
+                "imagem.com",
+                1050,
+                categories
+        );
+        Product saveProduct = ProductMapper.toProduct(product);
+        saveProduct.setId(1L);
+        saveProduct.setCategory(new ArrayList<>(List.of(category)));
+
+
+        ProductRequest product2 = new ProductRequest("Nome produto2",
+                "Descricao Produto2",
+                BigDecimal.TWO,
+                "imagem.com/2",
+                1052,
+                categories
+        );
+
+
+        when(productRepository.findById(1L)).thenReturn(Optional.of(saveProduct));
+        when(productRepository.save(any(Product.class))).thenReturn(saveProduct);
+
+        var result = productService.update(1L, product2);
+
+        assertEquals(product2.name(), result.getName());
+        assertEquals(product2.description(), result.getDescription());
+        assertEquals(product2.price(), result.getPrice());
+        assertEquals(product2.imageUrl(), result.getImageUrl());
+        assertEquals(product2.stockQuantity(), result.getStockQuantity());
+
+
+
     }
 
 }
